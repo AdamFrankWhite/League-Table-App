@@ -1,0 +1,62 @@
+* {
+	box-sizing: border-box;
+}
+
+/* ELEMENT STYLES -------------------- */
+
+body {
+  font-family: Montserrat;
+}
+
+header {
+
+}
+
+header h1 {
+	text-align: center;
+	font-weight: bold;
+}
+
+/* FORMS */
+
+form {
+  
+}
+
+
+
+/* ICONS */
+
+
+/* COMPONENT STYLES -------------------- */
+
+.scoreboard {
+	width: 70%;
+	height: 400px;
+	background-color: lightblue;
+	border: 4px black solid;
+	border-radius: 5px;
+	margin: auto;
+}
+
+.gamesRem {
+	display: block;
+	text-align: right;
+	margin-right: 2em;
+}
+
+table {
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 2em;
+}
+
+.data {
+	border: 1px red solid;
+}
+
+.row {
+	width: 70%;
+	margin: auto;
+	border: black 2px solid;
+}
