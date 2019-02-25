@@ -11,19 +11,28 @@ const Table = (props) => {
 	return (
 		<table>
 			<thead>
-				<tr className="row">
-					<th>Team Name</th>
-					<th>Player</th>
-					<th>Won</th>
-					<th>Lost</th>
-					<th>Drawn</th>
-					<th>For</th>
-					<th>Against</th>
-					<th>Points</th>
+				<tr className="col-headings">
+					<th className="name-col">Team Name</th>
+					<th className="col">Played</th>
+					<th className="col">Won</th>
+					<th className="col">Lost</th>
+					<th className="col">Drawn</th>
+					<th className="col">For</th>
+					<th className="col">Against</th>
+					<th className="col">Points</th>
 				</tr>
 			</thead>	
 			<tbody>
 				<Team name="Heaton Norris Wanderers"/>
+				<Team name="Heaton Moor FC"/>
+				<Team name="Heaton Chapel Town"/>
+				<Team name="New Mills United"/>
+				<Team name="Buxton Rangers"/>
+				<Team name="Marple Bridge"/>
+				<Team name="Reddish FC"/>
+				<Team name="Bramhall City"/>
+				<Team name="Cheadle Hulme"/>
+				<Team name="Romiley Orient"/>
 			</tbody>			
 		</table>
 		
@@ -53,6 +62,20 @@ class Team extends React.Component {
 		points: prevState.points + 3
       }
     });
+	}
+	
+	incrementScore = () => {
+		this.setState( prevState => {
+			return {
+				played: prevState.played + 1,
+				won: prevState.won + 1,
+				lost: prevState.lost + 1,
+				drawn: prevState.drawn + 1,
+				goalsFor: prevState.goalsFor + 1,
+				goalsAgainst: prevState.goalsAgainst + 1,
+				points: prevState.points + 1
+			}
+	});
   
   }
 
@@ -60,15 +83,15 @@ class Team extends React.Component {
 
   render() {
     return (
-		<tr>
-			<td className="team-name">Heaton Norris Wanderers</td>
-			<td className="data">{this.state.played}</td>
-			<td className="data">{this.state.won}</td>
-			<td className="data">{this.state.lost}</td>
-			<td className="data">{this.state.drawn}</td>
-			<td className="data">{this.state.goalsFor}</td>
-			<td className="data">{this.state.goalsAgainst}</td>
-			<td className="data">{this.state.points}</td>
+		<tr className="row">
+			<td className="team-name">{this.props.name}</td>
+			<td className="data"><span className="left"> - </span>  {this.state.played}  <span className="right" onClick={this.incrementScore}> + </span></td>
+			<td className="data"><span className="left"> - </span>  {this.state.won}  <span className="right" onClick={this.incrementScore}> + </span></td>
+			<td className="data"><span className="left"> - </span>  {this.state.lost}  <span className="right" onClick={this.incrementScore}> + </span></td>
+			<td className="data"><span className="left"> - </span>  {this.state.drawn}  <span className="right" onClick={this.incrementScore}> + </span></td>
+			<td className="data"><span className="left"> - </span>  {this.state.goalsFor}  <span className="right" onClick={this.incrementScore}> + </span></td>
+			<td className="data"><span className="left"> - </span>  {this.state.goalsAgainst}  <span className="right" onClick={this.incrementScore}> + </span></td>
+			<td className="data"><span className="left"> - </span>  {this.state.points}  <span  className="right" onClick={this.incrementScore}> + </span></td>
 		</tr>	
   )
 }
@@ -91,3 +114,17 @@ ReactDOM.render(
 	<App />,
 	document.getElementById('root')
 )
+
+$('.row').mouseenter(function () {
+	$('.row').css({border: 'green solid 3px'})
+	$('.row .left, .row .right').css({visibility: 'visible'})
+})
+
+$('.row').mouseleave(function () {
+	$('.row').css({border: 'none'})
+	$('.row .left, .row .right').css({visibility: 'hidden'})
+})
+
+
+
+// TO DO: add results input button, which updates tables and add results score to list of recent results

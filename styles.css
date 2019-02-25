@@ -31,12 +31,13 @@ form {
 /* COMPONENT STYLES -------------------- */
 
 .scoreboard {
-	width: 70%;
-	height: 400px;
+	width: 80%;
+	height: 600px;
 	background-color: lightblue;
 	border: 4px black solid;
 	border-radius: 5px;
 	margin: auto;
+
 }
 
 .gamesRem {
@@ -49,14 +50,64 @@ table {
 	margin-left: auto;
 	margin-right: auto;
 	margin-top: 2em;
+	font-size: 1.1em;
+}
+
+.col {
+	width: 70px;
 }
 
 .data {
-	border: 1px red solid;
+	text-align: center;
+	font-size: 2em;
+}
+.left,
+.right {
+	visibility: hidden;
+	background: white;
+	width: 25px;
+	height: 25px;
+	border: black 2px solid;
+	vertical-align: middle;
+}
+
+.left {
+	margin-right: auto;
+}
+
+.right {
+	margin-left: auto;
+}
+
+.left:hover{
+	background: red;
+}
+
+.right:hover {
+	background: green;
 }
 
 .row {
 	width: 70%;
 	margin: auto;
 	border: black 2px solid;
+	margin-top: 0;
+	margin-bottom: 0;
+	border: black solid 2px;
+}
+
+.row:hover{
+	cursor: pointer;
+}
+
+thead .col-headings {
+	background: yellow;
+}
+
+tbody .row:nth-of-type(1) {
+	background: aqua;
+}
+
+tbody .row:nth-last-of-type(1) {
+	background: red;
 }
