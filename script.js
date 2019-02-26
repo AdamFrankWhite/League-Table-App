@@ -64,19 +64,75 @@ class Team extends React.Component {
     });
 	}
 	
-	incrementScore = () => {
+	incrementPlayed = () => {
 		this.setState( prevState => {
 			return {
 				played: prevState.played + 1,
+			}
+		});
+	}
+	
+	incrementWon = () => {
+		this.setState( prevState => {
+			return {
 				won: prevState.won + 1,
+			}
+		});
+	}
+	
+	incrementLost = () => {
+		this.setState( prevState => {
+			return {
 				lost: prevState.lost + 1,
+			}
+		});
+	}
+	
+	incrementDrawn = () => {
+		this.setState( prevState => {
+			return {
 				drawn: prevState.drawn + 1,
+			}
+		});
+	}
+	
+	incrementGoalsFor = () => {
+		this.setState( prevState => {
+			return {
 				goalsFor: prevState.goalsFor + 1,
+			}
+		});
+	}
+	
+	incrementGoalsAgainst = () => {
+		this.setState( prevState => {
+			return {
 				goalsAgainst: prevState.goalsAgainst + 1,
-				points: prevState.points + 1
+			}
+		});
+	}
+	
+	incrementPoints = () => {
+		this.setState( prevState => {
+			return {
+				points: prevState.points + 1,
+			}
+		});
+	}
+  
+  
+  decrementScore = () => {
+		this.setState( prevState => {
+			return {
+				played: prevState.played - 1,
+				won: prevState.won - 1,
+				lost: prevState.lost - 1,
+				drawn: prevState.drawn - 1,
+				goalsFor: prevState.goalsFor - 1,
+				goalsAgainst: prevState.goalsAgainst - 1,
+				points: prevState.points - 1
 			}
 	});
-  
   }
 
  
@@ -85,13 +141,13 @@ class Team extends React.Component {
     return (
 		<tr className="row">
 			<td className="team-name">{this.props.name}</td>
-			<td className="data"><span className="left"> - </span>  {this.state.played}  <span className="right" onClick={this.incrementScore}> + </span></td>
-			<td className="data"><span className="left"> - </span>  {this.state.won}  <span className="right" onClick={this.incrementScore}> + </span></td>
-			<td className="data"><span className="left"> - </span>  {this.state.lost}  <span className="right" onClick={this.incrementScore}> + </span></td>
-			<td className="data"><span className="left"> - </span>  {this.state.drawn}  <span className="right" onClick={this.incrementScore}> + </span></td>
-			<td className="data"><span className="left"> - </span>  {this.state.goalsFor}  <span className="right" onClick={this.incrementScore}> + </span></td>
-			<td className="data"><span className="left"> - </span>  {this.state.goalsAgainst}  <span className="right" onClick={this.incrementScore}> + </span></td>
-			<td className="data"><span className="left"> - </span>  {this.state.points}  <span  className="right" onClick={this.incrementScore}> + </span></td>
+			<td className="data"><span unselectable="on" className="left" onClick={this.decrementScore}> - </span>  {this.state.played}  <span unselectable="on" className="right" onClick={this.incrementPlayed}> + </span></td>
+			<td className="data"><span className="left" onClick={this.decrementScore}> - </span>  {this.state.won}  <span className="right" onClick={this.incrementWon}> + </span></td>
+			<td className="data"><span className="left" onClick={this.decrementScore}> - </span>  {this.state.lost}  <span className="right" onClick={this.incrementLost}> + </span></td>
+			<td className="data"><span className="left" onClick={this.decrementScore}> - </span>  {this.state.drawn}  <span className="right" onClick={this.incrementDrawn}> + </span></td>
+			<td className="data"><span className="left" onClick={this.decrementScore}> - </span>  {this.state.goalsFor}  <span className="right" onClick={this.incrementGoalsFor}> + </span></td>
+			<td className="data"><span className="left" onClick={this.decrementScore}> - </span>  {this.state.goalsAgainst}  <span className="right" onClick={this.incrementGoalsAgainst}> + </span></td>
+			<td className="data"><span className="left" onClick={this.decrementScore}> - </span>  {this.state.points}  <span  className="right" onClick={this.incrementPoints}> + </span></td>
 		</tr>	
   )
 }
@@ -115,15 +171,25 @@ ReactDOM.render(
 	document.getElementById('root')
 )
 
-$('.row').mouseenter(function () {
-	$('.row').css({border: 'green solid 3px'})
-	$('.row .left, .row .right').css({visibility: 'visible'})
+$('.data').on('click', function (event) {  // provides editing functionality for each cell
+	let $target = $(event.target)
+	$($target).css({border: 'green solid 2px'})
+	$($target).children().css({visibility: 'visible'})
+	
+	// off-click listener: if target of second click is not original target or one of it's children -- 
+	$(document).on('click', function (event) {
+		if (!$target.is(event.target) && $target.has(event.target).length === 0) { 
+			console.log("boo")
+			$($target).children().css({visibility: 'hidden'});
+			$($target).css({border: 'none'})
+		}
+		
+	});
+	
+	
 })
 
-$('.row').mouseleave(function () {
-	$('.row').css({border: 'none'})
-	$('.row .left, .row .right').css({visibility: 'hidden'})
-})
+
 
 
 
