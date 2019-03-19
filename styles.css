@@ -35,7 +35,7 @@ form {
 	display: table; /* cross browser alternative to fit-content*/ 
 	/* height: 100vh; */
 	/* height: fit-content; */
-	background-color: lightblue;
+	background-color: dodgerblue;
 	border: 4px black solid;
 	border-radius: 5px;
 	margin: auto;
@@ -51,16 +51,26 @@ form {
 
 table {
 	margin: 2em auto;
+	border: white solid 4px;
+	border-radius: 5px;
 }
 
 .col {
-	width: 70px;
+	width: 90px;
 }
+
+
 
 .data {
 	text-align: center;
 	font-size: 2em;
+	height: 50px;
 }
+
+.data:hover {
+	border: inset white 3px;
+	height: 44px; /* inset border and reduced cell height by 2*border-width, to maintain cell size on hover */
+} 
 .left,
 .right {
 	visibility: hidden;
