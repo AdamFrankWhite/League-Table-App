@@ -2,7 +2,7 @@ const Header = (props) => {
 	return (
 		<header>
 			<h1>{props.title}</h1>
-			<span className="gamesRem">Games Remaining: {props.remaining}</span>
+			<p>Click on table to edit points...</p>
 		</header>	
 	)
 }
@@ -119,21 +119,63 @@ class Team extends React.Component {
 			}
 		});
 	}
+  // Decrements ====
   
-  
-  decrementScore = () => {
+	decrementPlayed = () => {
 		this.setState( prevState => {
 			return {
 				played: prevState.played - 1,
-				won: prevState.won - 1,
-				lost: prevState.lost - 1,
-				drawn: prevState.drawn - 1,
-				goalsFor: prevState.goalsFor - 1,
-				goalsAgainst: prevState.goalsAgainst - 1,
-				points: prevState.points - 1
 			}
-	});
-  }
+		});
+	}
+	
+	decrementWon = () => {
+		this.setState( prevState => {
+			return {
+				won: prevState.won - 1,
+			}
+		});
+	}
+	
+	decrementLost = () => {
+		this.setState( prevState => {
+			return {
+				lost: prevState.lost - 1,
+			}
+		});
+	}
+	
+	decrementDrawn = () => {
+		this.setState( prevState => {
+			return {
+				drawn: prevState.drawn - 1,
+			}
+		});
+	}
+	
+	decrementGoalsFor = () => {
+		this.setState( prevState => {
+			return {
+				goalsFor: prevState.goalsFor - 1,
+			}
+		});
+	}
+	
+	decrementGoalsAgainst = () => {
+		this.setState( prevState => {
+			return {
+				goalsAgainst: prevState.goalsAgainst - 1,
+			}
+		});
+	}
+	
+	decrementPoints = () => {
+		this.setState( prevState => {
+			return {
+				points: prevState.points + 1,
+			}
+		});
+	}
 
  
 
@@ -141,13 +183,13 @@ class Team extends React.Component {
     return (
 		<tr className="row">
 			<td className="team-name">{this.props.name}</td>
-			<td className="data"><span unselectable="on" className="left" onClick={this.decrementScore}> - </span>  {this.state.played}  <span unselectable="on" className="right" onClick={this.incrementPlayed}> + </span></td>
-			<td className="data"><span className="left" onClick={this.decrementScore}> - </span>  {this.state.won}  <span className="right" onClick={this.incrementWon}> + </span></td>
-			<td className="data"><span className="left" onClick={this.decrementScore}> - </span>  {this.state.lost}  <span className="right" onClick={this.incrementLost}> + </span></td>
-			<td className="data"><span className="left" onClick={this.decrementScore}> - </span>  {this.state.drawn}  <span className="right" onClick={this.incrementDrawn}> + </span></td>
-			<td className="data"><span className="left" onClick={this.decrementScore}> - </span>  {this.state.goalsFor}  <span className="right" onClick={this.incrementGoalsFor}> + </span></td>
-			<td className="data"><span className="left" onClick={this.decrementScore}> - </span>  {this.state.goalsAgainst}  <span className="right" onClick={this.incrementGoalsAgainst}> + </span></td>
-			<td className="data"><span className="left" onClick={this.decrementScore}> - </span>  {this.state.points}  <span  className="right" onClick={this.incrementPoints}> + </span></td>
+			<td className="data"><span unselectable="on" className="left" onClick={this.decrementPlayed}> - </span>  {this.state.played}  <span unselectable="on" className="right" onClick={this.incrementPlayed}> + </span></td>
+			<td className="data"><span className="left" onClick={this.decrementWon}> - </span>  {this.state.won}  <span className="right" onClick={this.incrementWon}> + </span></td>
+			<td className="data"><span className="left" onClick={this.decrementLost}> - </span>  {this.state.lost}  <span className="right" onClick={this.incrementLost}> + </span></td>
+			<td className="data"><span className="left" onClick={this.decrementDrawn}> - </span>  {this.state.drawn}  <span className="right" onClick={this.incrementDrawn}> + </span></td>
+			<td className="data"><span className="left" onClick={this.decrementGoalsFor}> - </span>  {this.state.goalsFor}  <span className="right" onClick={this.incrementGoalsFor}> + </span></td>
+			<td className="data"><span className="left" onClick={this.decrementGoalsAgainst}> - </span>  {this.state.goalsAgainst}  <span className="right" onClick={this.incrementGoalsAgainst}> + </span></td>
+			<td className="data"><span className="left" onClick={this.decrementPoints}> - </span>  {this.state.points}  <span  className="right" onClick={this.incrementPoints}> + </span></td>
 		</tr>	
   )
 }
@@ -157,7 +199,7 @@ class Team extends React.Component {
 const App = (props) => {
 	return (
 		<div className="scoreboard">
-			<Header title="Cheshire West League" remaining={10} />
+			<Header title="CHESHIRE WEST LEAGUE" remaining={10} />
 			<Table />
 		</div>
 
