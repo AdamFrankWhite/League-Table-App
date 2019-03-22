@@ -2,7 +2,7 @@
 	box-sizing: border-box;
 }
 
-/* ELEMENT STYLES -------------------- */
+/* === ELEMENT STYLES ================ */
 
 body {
   font-family: Montserrat;
@@ -25,24 +25,18 @@ p {
 	color: white;
 }
 
-/* FORMS */
 
-form {
-  
+/* === COMPONENT STYLES =============== */
+
+table {
+	margin: 2em auto;
+	border: white solid 4px;
+	border-radius: 5px;
 }
-
-
-
-/* ICONS */
-
-
-/* COMPONENT STYLES -------------------- */
 
 .scoreboard {
 	width: 70%;
 	display: table; /* cross browser alternative to fit-content*/ 
-	/* height: 100vh; */
-	/* height: fit-content; */
 	background-color: dodgerblue;
 	border: 4px black solid;
 	border-radius: 5px;
@@ -57,17 +51,9 @@ form {
 	margin-right: 2em;
 }
 
-table {
-	margin: 2em auto;
-	border: white solid 4px;
-	border-radius: 5px;
-}
-
 .col {
 	width: 90px;
 }
-
-
 
 .data {
 	text-align: center;
@@ -79,6 +65,7 @@ table {
 	border: inset white 3px;
 	height: 44px; /* inset border and reduced cell height by 2*border-width, to maintain cell size on hover */
 } 
+
 .left,
 .right {
 	visibility: hidden;
