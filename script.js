@@ -1,3 +1,5 @@
+// ==== Components ====
+
 const Header = (props) => {
 	return (
 		<header>
@@ -40,9 +42,6 @@ const Table = (props) => {
 
 }
 
-	
-
-
 class Team extends React.Component {
 	state = {
 		played: 0,
@@ -53,16 +52,18 @@ class Team extends React.Component {
 		goalsAgainst: 0,
 		points: 0
 	}
-	addResults = () => {
-    this.setState( prevState => {
-      return {
-        played: prevState.played + 1,
-		won: prevState.won +1,
-		goalsFor: prevState.goalsFor + 1,
-		points: prevState.points + 3
-      }
-    });
-	}
+	// addResults = () => {
+    // this.setState( prevState => {
+      // return {
+        // played: prevState.played + 1,
+		// won: prevState.won +1,
+		// goalsFor: prevState.goalsFor + 1,
+		// points: prevState.points + 3
+      // }
+    // });
+	// }
+	
+	// Increments
 	
 	incrementPlayed = () => {
 		this.setState( prevState => {
@@ -177,7 +178,7 @@ class Team extends React.Component {
 		});
 	}
 
- 
+	// Rending
 
   render() {
     return (
@@ -195,6 +196,7 @@ class Team extends React.Component {
 }
 }
 
+// === Main App Component ===
 
 const App = (props) => {
 	return (
@@ -213,6 +215,8 @@ ReactDOM.render(
 	document.getElementById('root')
 )
 
+// ==== Event listeners ====
+
 $('.data').on('click', function (event) {  // provides editing functionality for each cell
 	let $target = $(event.target)
 	$($target).css({border: 'green solid 2px'})
@@ -225,12 +229,9 @@ $('.data').on('click', function (event) {  // provides editing functionality for
 			$($target).children().css({visibility: 'hidden'});
 			$($target).css({border: 'none'})
 		}
-		
-	});
-	
+	});	
 	
 })
-
 
 
 
