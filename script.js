@@ -13,7 +13,7 @@ const Table = (props) => {
 	return (
 		<table>
 			<thead>
-				<tr className="col-headings">
+				<tr>
 					<th className="name-col">Team Name</th>
 					<th className="col">Played</th>
 					<th className="col">Won</th>
@@ -184,13 +184,41 @@ class Team extends React.Component {
     return (
 		<tr className="row">
 			<td className="team-name">{this.props.name}</td>
-			<td className="data"><span unselectable="on" className="left" onClick={this.decrementPlayed}> - </span>  {this.state.played}  <span unselectable="on" className="right" onClick={this.incrementPlayed}> + </span></td>
-			<td className="data"><span className="left" onClick={this.decrementWon}> - </span>  {this.state.won}  <span className="right" onClick={this.incrementWon}> + </span></td>
-			<td className="data"><span className="left" onClick={this.decrementLost}> - </span>  {this.state.lost}  <span className="right" onClick={this.incrementLost}> + </span></td>
-			<td className="data"><span className="left" onClick={this.decrementDrawn}> - </span>  {this.state.drawn}  <span className="right" onClick={this.incrementDrawn}> + </span></td>
-			<td className="data"><span className="left" onClick={this.decrementGoalsFor}> - </span>  {this.state.goalsFor}  <span className="right" onClick={this.incrementGoalsFor}> + </span></td>
-			<td className="data"><span className="left" onClick={this.decrementGoalsAgainst}> - </span>  {this.state.goalsAgainst}  <span className="right" onClick={this.incrementGoalsAgainst}> + </span></td>
-			<td className="data"><span className="left" onClick={this.decrementPoints}> - </span>  {this.state.points}  <span  className="right" onClick={this.incrementPoints}> + </span></td>
+			<td className="data">
+				<span unselectable="on" className="left" onClick={this.decrementPlayed}>-</span>
+				{this.state.played}  
+				<span unselectable="on" className="right" onClick={this.incrementPlayed}>+</span>
+			</td>
+			<td className="data">
+				<span className="left" onClick={this.decrementWon}>-</span>
+				{this.state.won}
+				<span className="right" onClick={this.incrementWon}>+</span>
+			</td>
+			<td className="data">
+				<span className="left" onClick={this.decrementLost}>-</span>
+				{this.state.lost}
+				<span className="right" onClick={this.incrementLost}>+</span>
+			</td>
+			<td className="data">
+				<span className="left" onClick={this.decrementDrawn}>-</span>
+				{this.state.drawn}
+				<span className="right" onClick={this.incrementDrawn}>+</span>
+			</td>
+			<td className="data">
+				<span className="left" onClick={this.decrementGoalsFor}>-</span>
+				{this.state.goalsFor}
+				<span className="right" onClick={this.incrementGoalsFor}>+</span>
+			</td>
+			<td className="data">
+				<span className="left" onClick={this.decrementGoalsAgainst}>-</span>
+				{this.state.goalsAgainst}
+				<span className="right" onClick={this.incrementGoalsAgainst}>+</span>
+			</td>
+			<td className="data">
+				<span className="left" onClick={this.decrementPoints}>-</span> 
+				{this.state.points}
+				<span className="right" onClick={this.incrementPoints}>+</span>
+			</td>
 		</tr>	
   )
 }
@@ -217,9 +245,17 @@ ReactDOM.render(
 
 // ==== Event listeners ====
 
+$(document).on("mouseenter", ".data", function(e) {
+	$(this).css("background","orange");
+});
+
+$(document).on("mouseleave", ".data", function(e) {
+	$(this).css("background","");
+});
+
 $('.data').on('click', function (event) {  // provides editing functionality for each cell
 	let $target = $(event.target)
-	$($target).css({border: 'green solid 2px'})
+	// $($target).css({border: 'white solid 2px', width: '21px', height: '16px'})
 	$($target).children().css({visibility: 'visible'})
 	
 	// off-click listener: if target of second click is not original target or one of it's children -- 
@@ -227,7 +263,7 @@ $('.data').on('click', function (event) {  // provides editing functionality for
 		if (!$target.is(event.target) && $target.has(event.target).length === 0) { 
 			console.log("boo")
 			$($target).children().css({visibility: 'hidden'});
-			$($target).css({border: 'none'})
+			// $($target).css({border: 'none', width: '25px', height: '20px'})
 		}
 	});	
 	
