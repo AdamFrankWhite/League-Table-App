@@ -1,5 +1,5 @@
 * {
-	box-sizing: border-box;
+	box-sizing: border-box; /* box width includes border, to avoid awkward sizing issues */
 }
 
 /* === ELEMENT STYLES ================ */
@@ -35,7 +35,7 @@ table {
 }
 
 .scoreboard {
-	width: 70%;
+	width: 80%;
 	display: table; /* cross browser alternative to fit-content*/ 
 	background-color: dodgerblue;
 	border: 4px black solid;
@@ -52,27 +52,26 @@ table {
 }
 
 .col {
-	width: 90px;
+	max-width: 120px;
 }
 
 .data {
 	text-align: center;
+	width: 105px;
+	padding-top: 0.25em;
+	padding-bottom: 0.25em;
 	font-size: 2em;
 	height: 50px;
 }
-
-.data:hover {
-	border: inset white 3px;
-	height: 44px; /* inset border and reduced cell height by 2*border-width, to maintain cell size on hover */
-} 
 
 .left,
 .right {
 	visibility: hidden;
 	background: white;
 	width: 25px;
-	height: 25px;
-	border: black 2px solid;
+	height: 20px;
+	border: 1px black solid;
+	border-radius: 5px;
 	vertical-align: middle;
 	-webkit-user-select: none; /* Chrome/Safari -- prevents users highlighting spans on multiple clicks*/        
 	-moz-user-select: none; /* Firefox */
@@ -81,11 +80,19 @@ table {
 
 
 .left {
-	margin-right: auto;
+	position: relative;
+	left: 0;
+	padding-left: 8px; /* offset smaller span size due to shortness of '-' */
+	padding-right: 8px;
+	margin-right: 5px;
 }
 
 .right {
-	margin-left: auto;
+	position: relative;
+	right: 0;
+	padding-left: 5px;
+	padding-right: 5px;
+	margin-left: 5px;
 }
 
 .left:hover{
@@ -98,6 +105,7 @@ table {
 
 .row {
 	width: 70%;
+	background-color: lightgray;
 	margin: auto;
 	border: black 2px solid;
 	margin-top: 0;
@@ -109,12 +117,16 @@ table {
 	cursor: pointer;
 }
 
-thead .col-headings {
-	background: yellow;
+th {
+	background: black;
+	color: white;
+	padding-top: 0.25em;
+	padding-bottom: 0.25em;
+	
 }
 
 tbody .row:nth-of-type(1) {
-	background: aqua;
+	background: yellow;
 }
 
 tbody .row:nth-last-of-type(1) {
