@@ -173,7 +173,7 @@ class Team extends React.Component {
 	decrementPoints = () => {
 		this.setState( prevState => {
 			return {
-				points: prevState.points + 1,
+				points: prevState.points - 1,
 			}
 		});
 	}
