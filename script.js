@@ -185,9 +185,9 @@ class Team extends React.Component {
 		<tr className="row">
 			<td className="team-name">{this.props.name}</td>
 			<td className="data">
-				<span unselectable="on" className="left" onClick={this.decrementPlayed}>-</span>
+				<span className="left" onClick={this.decrementPlayed}>-</span>
 				{this.state.played}  
-				<span unselectable="on" className="right" onClick={this.incrementPlayed}>+</span>
+				<span className="right" onClick={this.incrementPlayed}>+</span>
 			</td>
 			<td className="data">
 				<span className="left" onClick={this.decrementWon}>-</span>
