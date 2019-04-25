@@ -36,6 +36,7 @@ table {
 
 .scoreboard {
 	width: 80%;
+	min-width: 1200px;
 	display: table; /* cross browser alternative to fit-content*/ 
 	background-color: dodgerblue;
 	border: 4px black solid;
@@ -53,6 +54,10 @@ table {
 
 .col {
 	max-width: 120px;
+}
+
+.name-col {
+	width: 240px;
 }
 
 .data {
